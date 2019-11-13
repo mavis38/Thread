@@ -39,20 +39,20 @@ int main(int argc, char **argv)
     pthread_t THREAD_ID_3[arg_num];
     
     struct sum_struct limit_1[arg_num];
-    struct sub_struct limit2[arg_num];
-    struct mult_struct limit3[arg_num];
+    struct sub_struct limit_2[arg_num];
+    struct mult_struct limit_3[arg_num];
 
     for (int i = 0; i < arg_num; i++)
     {
         limit_1[i].limit = atoll(argv[1+i]);
-        limit2[i].limit = atoll(argv[1+i]);
-        limit3[i].limit = atoll(argv[1+i]);
+        limit_2[i].limit = atoll(argv[1+i]);
+        limit_3[i].limit = atoll(argv[1+i]);
 
         pthread_attr_t THREAD_ATTRIBUTE;
         pthread_attr_init(&THREAD_ATTRIBUTE);
         pthread_create(&THREAD_ID_1[i], &THREAD_ATTRIBUTE, run_sum, &limit_1[i]);
-        pthread_create(&THREAD_ID_2[i], &THREAD_ATTRIBUTE, run_sub, &limit2[i]);
-        pthread_create(&THREAD_ID_3[i], &THREAD_ATTRIBUTE, run_mult, &limit3[i]);
+        pthread_create(&THREAD_ID_2[i], &THREAD_ATTRIBUTE, run_sub, &limit_2[i]);
+        pthread_create(&THREAD_ID_3[i], &THREAD_ATTRIBUTE, run_mult, &limit_3[i]);
     }
 
     void *exit_status;
@@ -69,8 +69,8 @@ int main(int argc, char **argv)
         pthread_join(THREAD_ID_3[i], &exit_status);
 
         printf("Soma: %lld\n", limit_1[i].answer);
-        printf("Subtracao: %lld\n", limit2[i].answer);
-        printf("Multiplicacao: %lld\n", limit3[i].answer);
+        printf("Subtracao: %lld\n", limit_2[i].answer);
+        printf("Multiplicacao: %lld\n", limit_3[i].answer);
         printf("\n\n");
     }
 }
