@@ -65,8 +65,8 @@ int main(int argc, char **argv)
     for (int i = 0; i < arg_num; i++)
     {
         pthread_join(THREAD_ID_1[i], &exit_status);
-        //pthread_join(THREAD_ID_2[i], &exit_status);
-        //pthread_join(THREAD_ID_3[i], &exit_status);
+        pthread_join(THREAD_ID_2[i], &exit_status);
+        pthread_join(THREAD_ID_3[i], &exit_status);
 
         printf("Soma: %lld\n", limit_1[i].answer);
         printf("Subtracao: %lld\n", limit2[i].answer);
