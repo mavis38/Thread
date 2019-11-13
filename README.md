@@ -4,7 +4,7 @@ Simple math operations using threads
 How to use this Makefile: 
 
  	make (Build project)
- 	./simple_thread <value>
+ 	./<program_name>_thread <value>
  	make clean
  	Obs: only gcc support
 
