@@ -14,7 +14,6 @@
 void* run_sum(void* arg);
 void* run_sub(void* arg);
 void* run_mult(void* arg);
-void* run_div(void* arg);
 
 long long sum = 0;
 long long sub = 0;
@@ -81,7 +80,13 @@ void* run_mult(void* arg)
     long long *ptr_limit = (long long*)arg;
     long long limit = *ptr_limit;
 
-    for (long long i = 1; i <= limit; i++) mult = mult*i;
+    int count = 1;
+
+    for (long long i = 1; i <= limit; i++) 
+    {
+        mult = mult*count;
+        count++;
+    }
 
     pthread_exit(0);
 }
